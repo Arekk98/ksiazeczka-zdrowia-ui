@@ -1,0 +1,18 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+  <div class="wrapper fadeInDown">
+    <div class="formContent">
+      <br/>
+      <h2 class="active"> Dodaj uwagę </h2>
+      <form (ngSubmit)="addComment()">
+        <input type="text" class="fadeIn third" name="commentValue" placeholder="Treść" [(ngModel)]="comment.value">
+        <br/>
+        <br/>
+        <button type="submit" class="fadeIn fourth">Dodaj</button>
+      </form>
+    </div>
+  </div>
+</div>

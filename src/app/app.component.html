@@ -1,0 +1,80 @@
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+
+<header>
+  <div class="overlay">
+    <h1> EKZ </h1>
+    <h2 *ngIf="!loggedInUser">Dołącz już dziś!</h2>
+    <h3>Elektroniczna książeczka zdrowia dla Twojego zwierzaka</h3>
+    <br>
+    <br>
+    <br>
+    <button *ngIf="!loggedInUser" routerLink="/login">Zarejestruj się</button>
+  </div>
+</header>
+
+<body>
+<nav class="skew-menu">
+  <ul>
+    <li><a routerLink="/">Strona główna</a></li>
+    <li><a routerLink="/animals">Książeczka zdrowia</a></li>
+    <li><a routerLink="/services">Usługi </a></li>
+    <li><a routerLink="/user" [queryParams]="{init: true}">Użytkownik</a></li>
+    <li *ngIf="loggedInUser; else login"><a routerLink="/" (click)="logout()">Wyloguj</a></li>
+    <ng-template #login>
+      <li><a routerLink="/login">Zaloguj</a></li>
+    </ng-template>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+<div class="footer-dark">
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-3 item">
+          <h3>Kontakt</h3>
+          <ul>
+            <li>Telefon: +48 123 456 789</li>
+            <li>E-mail: <a href="#">kontakt@ekz.pl</a></li>
+            <li>Adres: ul. Zdrowa 16, 30-258 Kraków</li>
+            <li>NIP: 123-456-7891</li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-md-3 item">
+          <h3>Przydatne źródła</h3>
+          <ul>
+            <li><a
+              href="https://www.wetgiw.gov.pl/nadzor-weterynaryjny/przemieszczenia-niehandlowe---podroz-ze-zwierzetami-towarzyszacymi">
+              Jak podróżować ze zwierzętami w Unii Europejskiej?</a></li>
+            <li><a href="https://www.safe-animal.eu/pl/znajdz-hodowle-na-mapie-polski/Ads/breedings">Sprawdzone hodowle
+              zwierząt domowych</a></li>
+            <li><a
+              href="https://jarocin.poznan.lasy.gov.pl/de/aktualnosci/-/asset_publisher/FP6y/content/wykaz-osrodkow-rehabilitacji-zwierzat-w-polsce/maximized?inheritRedirect=false&redirect=https%3A%2F%2Fjarocin.poznan.lasy.gov.pl%2Fde%2Faktualnosci%3Fp_p_id%3D101_INSTANCE_FP6y%26p_p_lifecycle%3D0%26p_p_state%3Dmaximized%26p_p_mode%3Dview%26_101_INSTANCE_FP6y_struts_action%3D%252Fasset_publisher%252Fview">Wykaz
+              ośrodków rehabilitacji zwierząt w Polsce</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 item text">
+          <h3>Elektroniczna książeczka dla Twojego zwierzaka</h3>
+          <p>E-książeczka, to wydawać by się mogło, po prostu internetowy odpowiednik papierowej książeczki zdrowia dla
+            zwierząt. Wirtualny charakter tej aplikacji sprawia jednak, że ma ona o wiele bardziej rozbudowane
+            możliwości niż jej drukowana koleżanka. Prócz tego, że gromadzi informacje, ma też inną niebagatelną zaletę:
+            naprawdę potrafi ułatwić życie.</p>
+        </div>
+        <div class="col item social">
+          <a href="#"><i class="icon ion-social-facebook"></i></a>
+          <a href="#"><i class="icon ion-social-twitter"></i></a>
+          <a href="#"><i class="icon ion-social-instagram"></i></a>
+        </div>
+      </div>
+      <p class="copyright">Arkadiusz Karbarz © 2022</p>
+    </div>
+  </footer>
+</div>
+</body>

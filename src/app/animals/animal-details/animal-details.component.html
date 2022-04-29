@@ -1,0 +1,68 @@
+<br/>
+<br/>
+
+<div class="wrapper fadeInDown">
+  <div class="formContent">
+    <br/>
+    <h2 class="active"> Książeczka zdrowia </h2>
+    <app-animal buttonText="Zapisz" [animal]="animal.animal ?? {}" [updateSuccess]="updateSuccess"
+                (animalEvent)="saveAnimal($event)"></app-animal>
+  </div>
+</div>
+
+<br/>
+<br/>
+
+<app-user-details *ngIf="loggedInAsVet" formTitle="Dane właściciela" [allowModification]=false [userDetails]="animal.owner ?? {}"></app-user-details>
+
+<div class="container">
+  <h2>Wizyty</h2>
+  <hr>
+  <table class="container">
+    <thead>
+    <tr>
+      <th>Data</th>
+      <th>Weterynarz</th>
+      <th>Usługi</th>
+      <th *ngIf="loggedInAsVet"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let visit of animal.visits; let i = index">
+      <td>{{visit.date?.replace('T', ' ')}}</td>
+      <td>{{visit.vet?.name}}</td>
+      <td>
+        <ul>
+          <li *ngFor="let service of visit.servicesNames">{{service}}</li>
+        </ul>
+      </td>
+      <td *ngIf="loggedInAsVet">
+        <button (click)="removeVisit(visit.id ?? '', i)">Usuń</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <button *ngIf="loggedInAsVet" [routerLink]="'/addVisit/' + (animal.animal?.id ?? '')">Dodaj wizytę</button>
+</div>
+
+<div class="container">
+  <h2>Uwagi</h2>
+  <ng-container *ngFor="let comment of animal.comments; let i = index">
+    <hr>
+    <p>{{comment.value}}</p>
+    <p>{{comment.date}}</p>
+    <button *ngIf="loggedInAsVet" (click)="removeComment(comment.id ?? '', i)">Usuń uwagę</button>
+  </ng-container>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <button *ngIf="loggedInAsVet" [routerLink]="'/addComment/' + (animal.animal?.id ?? '')">Dodaj uwagę</button>
+</div>
+
+<div class="container">
+  <button routerLink="/animals">Powrót do moich książeczek</button>
+</div>

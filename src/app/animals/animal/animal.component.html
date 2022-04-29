@@ -1,0 +1,19 @@
+<form (ngSubmit)="animalSubmit()" #animalForm="ngForm">
+  <input type="text" class="fadeIn second" name="name" placeholder="Imię" [(ngModel)]="animal.name">
+  <input type="text" class="fadeIn third" name="species" placeholder="Gatunek" [(ngModel)]="animal.species">
+  <input type="text" class="fadeIn third" name="breed" placeholder="Rasa" [(ngModel)]="animal.breed">
+  <input type="text" class="fadeIn third" name="sex" placeholder="Płeć" [(ngModel)]="animal.sex">
+  <input type="text" class="fadeIn third" name="coat" placeholder="Maść" [(ngModel)]="animal.coat">
+  <input type="text" class="fadeIn third" name="typeOfHair" placeholder="Rodzaj włosa" [(ngModel)]="animal.typeOfHair">
+  <input (mouseenter)="dateOfBirthType = 'date'" (mouseleave)="dateOfBirthType = 'text'" (focusin)="dateOfBirthType = 'date'" (focusout)="dateOfBirthType = 'text'" [type]="dateOfBirthType" class="fadeIn third" name="dateOfBirth" placeholder="Data urodzenia" [(ngModel)]="animal.dateOfBirth">
+  <label class="fadeIn third" *ngIf="loggedInAsVet">
+    Właściciel:
+    <select name="ownerUsername" [(ngModel)]="animal.ownerUsername">
+      <option *ngFor="let user of users" [value]="user.username">{{user.name}}</option>
+    </select>
+  </label>
+  <br/>
+  <br/>
+  <button type="submit" class="fadeIn fourth" [disabled]="!animalForm.dirty">{{buttonText}}</button>
+  <p style="color:green;" *ngIf="updateSuccess"> Zapisano poprawnie </p>
+</form>

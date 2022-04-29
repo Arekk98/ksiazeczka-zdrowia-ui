@@ -1,0 +1,22 @@
+<div id="container">
+  <div class="wrapper fadeInDown">
+    <div class="formContent">
+      <br/>
+      <h2 class="active">{{formTitle}}</h2>
+      <form (ngSubmit)="save()" #userDetailsForm="ngForm">
+        <input type="text" class="fadeIn second" name="name" placeholder="Imię" [(ngModel)]="userDetails.name" required [disabled]="!allowModification">
+        <input type="text" class="fadeIn third" name="surname" placeholder="Nazwisko" [(ngModel)]="userDetails.surname" required [disabled]="!allowModification">
+        <input type="text" class="fadeIn third" name="email" placeholder="Email" [(ngModel)]="userDetails.email" [disabled]="!allowModification">
+        <input type="text" class="fadeIn third" name="phoneNumber" placeholder="Numer telefonu" [(ngModel)]="userDetails.phoneNumber" [disabled]="!allowModification">
+        <input type="text" class="fadeIn third" name="street" placeholder="Ulica i numer domu" [(ngModel)]="userDetails.street" [disabled]="!allowModification">
+        <input type="text" class="fadeIn third" name="city" placeholder="Miasto" [(ngModel)]="userDetails.city" [disabled]="!allowModification">
+        <input type="text" class="fadeIn third" name="postcode" placeholder="Kod pocztowy" [(ngModel)]="userDetails.postcode" [disabled]="!allowModification">
+        <br/>
+        <button *ngIf="allowModification" type="button" class="fadeIn fourth" (click)="useGeolocation(userDetailsForm)">Użyj swojej lokalizacji</button>
+        <button *ngIf="allowModification" type="submit" class="fadeIn fourth" [disabled]="userDetailsForm.invalid || !userDetailsForm.dirty">Zapisz</button>
+        <p style="color:green;" *ngIf="updateSuccess"> Zapisano poprawnie </p>
+        <br/>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="fadeInDown">
+  <div>
+    <table class="responsive-table container">
+      <thead>
+      <tr>
+        <th>Imię</th>
+        <th>Gatunek</th>
+        <th>Właściciel</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let animal of animals; let i = index">
+        <td>{{animal.name}}</td>
+        <td>{{animal.species}}</td>
+        <td>{{animal.owner.name}}</td>
+        <td>
+          <button (click)="removeAnimal(animal.id, i)">Usuń</button>
+          <button [routerLink]="['/animalDetails', animal.id]">Zobacz więcej</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br/>
+  <div class="container">
+    <div class="center">
+      <button routerLink="/addAnimal">Dodaj nową książeczkę</button>
+    </div>
+  </div>
+</div>
+<br/>

@@ -1,0 +1,31 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+  <div class="wrapper fadeInDown">
+    <div class="formContent">
+      <br/>
+      <h2 class="active"> Dodaj wizytę </h2>
+      <form (ngSubmit)="addVisit()">
+        <input type="datetime-local" name="visitDate" [(ngModel)]="visitDate">
+        <label>
+          Weterynarz:
+          <select name="vetUsername" [(ngModel)]="vetUsername">
+            <option *ngFor="let vet of vets" [value]="vet.username">{{vet.name}}</option>
+          </select>
+        </label>
+        <br/>
+        <label>
+          Usługi:
+          <select multiple name="servicesIds" [(ngModel)]="servicesIds">
+            <option *ngFor="let service of services" [value]="service.id">{{service.name}}</option>
+          </select>
+        </label>
+        <br/>
+        <br/>
+        <button type="submit" class="fadeIn fourth">Dodaj</button>
+      </form>
+    </div>
+  </div>
+</div>

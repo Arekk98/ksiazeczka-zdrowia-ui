@@ -1,0 +1,26 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+  <div class="wrapper fadeInDown">
+    <div class="formContent">
+      <br/>
+      <h2 class="active"> Dodaj usługę </h2>
+      <form (ngSubmit)="add()">
+        <input type="text" class="fadeIn second" name="name" placeholder="Nazwa usługi" [(ngModel)]="service.name">
+        <input type="text" class="fadeIn third" name="description" placeholder="Opis" [(ngModel)]="service.description">
+        <br/>
+        <br/>
+        <button type="submit" class="fadeIn fourth">Dodaj</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="center">
+    <button routerLink="/services">Powrót do usług</button>
+  </div>
+</div>
+<br/>

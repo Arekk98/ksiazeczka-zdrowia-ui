@@ -1,0 +1,44 @@
+<div id="container">
+  <div class="wrapper fadeInDown">
+    <div class="formContent">
+      <br/>
+      <h2 class="active"> Zaloguj się </h2>
+
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <input type="text" class="fadeIn second" name="username" placeholder="Login" [(ngModel)]="loginData.username" required/>
+        <input type="password" class="fadeIn third" name="password" placeholder="Hasło" [(ngModel)]="loginData.password" required/>
+        <button type="submit" class="fadeIn fourth" [disabled]="loginForm.invalid">Zaloguj się</button>
+        <br/>
+        <p style="color:red;" *ngIf="loginFailed">Niepoprawny login lub hasło</p>
+        <br/>
+      </form>
+      <h3 class="active"> Zaloguj się przez: </h3>
+      <a href="#"><i class="icon ion-social-google" style="font-size:40px; padding: 10px;" (click)="login_to_google()"></i></a>
+      <br/>
+      <br/>
+      <br/>
+    </div>
+  </div>
+  <hr>
+  <div class="wrapper fadeInDown">
+    <div class="formContent">
+      <br/>
+      <h2 class="active"> Zarejestruj się </h2>
+
+      <form (ngSubmit)="register()" #registrationForm="ngForm">
+        <input type="text" class="fadeIn second" name="username" placeholder="Login" [(ngModel)]="registrationData.username" required>
+        <input type="text" class="fadeIn second" name="name" placeholder="Imię" [(ngModel)]="registrationData.name" required>
+        <input type="text" class="fadeIn second" name="surname" placeholder="Nazwisko" [(ngModel)]="registrationData.surname" required>
+        <input type="password" class="fadeIn third" name="password" placeholder="Hasło" [(ngModel)]="registrationData.password" required>
+        <input type="password" class="fadeIn third" name="repeatedPassword" placeholder="Powtórz hasło" [(ngModel)]="registrationData.repeatedPassword" required>
+        <input type="password" class="fadeIn third" name="vetCode" placeholder="Kod weterynarza*" [(ngModel)]="registrationData.vetCode">
+        <p> *Jeżeli rejestrujesz się jako pacjent - pozostaw to pole puste </p>
+        <button type="submit" class="fadeIn fourth" [disabled]="registrationForm.invalid">Zarejestruj się</button>
+        <p style="color:green;" *ngIf="registrationSuccess"> Zarejestrowano, teraz możesz się zalogować </p>
+        <br/>
+        <p style="color:red;" *ngIf="registrationFailed">{{registrationMessage}}</p>
+        <br/>
+      </form>
+    </div>
+  </div>
+</div>

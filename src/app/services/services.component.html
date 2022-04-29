@@ -1,0 +1,27 @@
+<br/>
+<br/>
+<div class="container fadeInDown">
+  <h2>Dostępne usługi</h2>
+  <hr>
+  <table *ngIf="services.length > 0">
+    <thead>
+    <tr>
+      <th>Nazwa usługi</th>
+      <th>Opis</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let service of services; let i = index">
+      <td>{{service.name}}</td>
+      <td>{{service.description}}</td>
+      <td><button (click)="removeService(service.id, i)" *ngIf="loggedInAsVet">Usuń</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <button routerLink="/addService" *ngIf="loggedInAsVet">Dodaj</button>
+  <br/>
+  <br/>
+</div>
