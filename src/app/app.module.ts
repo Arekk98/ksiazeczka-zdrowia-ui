@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import {AngularFireModule} from "@angular/fire/compat";
       registrationStrategy: 'registerWhenStable:30000'
     }),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     provideAuth(() => getAuth())
   ],
   providers: [

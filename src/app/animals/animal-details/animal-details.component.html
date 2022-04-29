@@ -1,3 +1,16 @@
+<div class="fadeInDown content wrapper">
+  <div class="formContent">
+    <div class="card">
+      <div class="card-header">
+        <img [src]="imageURL" alt=""/>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{animal.animal?.name ?? ''}}</h5>
+        <input type="file" accept=".png,.jpg" (change)="upload($event)"/>
+      </div>
+    </div>
+  </div>
+</div>
 <br/>
 <br/>
 
@@ -13,7 +26,8 @@
 <br/>
 <br/>
 
-<app-user-details *ngIf="loggedInAsVet" formTitle="Dane właściciela" [allowModification]=false [userDetails]="animal.owner ?? {}"></app-user-details>
+<app-user-details *ngIf="loggedInAsVet" formTitle="Dane właściciela" [allowModification]=false
+                  [userDetails]="animal.owner ?? {}"></app-user-details>
 
 <div class="container">
   <h2>Wizyty</h2>

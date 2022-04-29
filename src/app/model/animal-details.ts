@@ -8,4 +8,5 @@ export interface AnimalDetails {
   coat?: string
   typeOfHair?: string
   ownerUsername?: string
+  imageId?: string
 }
